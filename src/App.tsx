@@ -91,7 +91,7 @@ function App() {
         { id: 'dm-19', role: 'agent', content: "And your email address?", timestamp: ts },
         { id: 'dm-20', role: 'user', content: "j.thornton@gmail.com", timestamp: ts },
         { id: 'dm-21', role: 'agent', content: "Your postcode?", timestamp: ts },
-        { id: 'dm-22', role: 'user', content: "LS29 0AY", timestamp: ts },
+        { id: 'dm-22', role: 'user', content: "BD23 3LX", timestamp: ts },
         { id: 'dm-23', role: 'agent', content: "What's your rough budget for this?", timestamp: ts },
         { id: 'dm-24', role: 'user', content: "Around £4,000", timestamp: ts },
         { id: 'dm-25', role: 'agent', content: "When are you looking to start?", timestamp: ts },
@@ -114,7 +114,7 @@ function App() {
         fullName: 'Daniel Myers',
         contactPhone: '07512 334 891',
         contactEmail: 'd.myers@hotmail.co.uk',
-        postalCode: 'LS29 0AY',
+        postalCode: 'BD23 3LX',
         userBudget: 4000,
         projectStartTiming: 'Next 2-3 months'
       }))
@@ -480,13 +480,13 @@ function App() {
   const activeReplies = state.showQuickReplies ? quickReplies : getQuickReplies(state)
 
   return (
-    <div className="flex min-h-screen flex-col" style={{ backgroundColor: '#ffffff' }}>
+    <div className="flex min-h-screen flex-col" style={{ backgroundColor: '#031904' }}>
 
       {/* Header */}
       <header className="border-b p-4" style={{ backgroundColor: '#1a3d5c', borderColor: '#1a5470' }}>
         <div className="mx-auto max-w-4xl">
-          <h1 className="text-xl font-bold" style={{ color: '#afcb09' }}>
-            Thomas Moore Landscapes
+          <h1 className="text-xl font-bold" style={{ color: '#031904' }}>
+            Sculpt Landscapes
           </h1>
           <p className="mt-1 text-sm" style={{ color: '#7ab8d0' }}>
             Green wall specialists | Vertical gardens | Living wall installations
@@ -559,26 +559,26 @@ function App() {
                   >
 
                     {/* 1. New Enquiry bar + logo */}
-                    <div style={{ backgroundColor: '#ffffff' }}>
+                    <div style={{ backgroundColor: '#031904' }}>
                       <div
                         className="px-6 py-2.5 flex items-center justify-between"
-                        style={{ backgroundColor: '#afcb09' }}
+                        style={{ backgroundColor: '#f6f4f5' }}
                       >
-                        <span className="text-sm font-black tracking-wide uppercase" style={{ color: '#2d2d2d' }}>
+                        <span className="text-sm font-black tracking-wide uppercase" style={{ color: '#031904' }}>
                           New Enquiry
                         </span>
-                        <span className="text-[11px] font-medium" style={{ color: '#2d2d2d', opacity: 0.65 }}>
+                        <span className="text-[11px] font-medium" style={{ color: '#031904', opacity: 0.65 }}>
                           Today at {new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: true })}
                         </span>
                       </div>
-                      <div className="flex items-center justify-center gap-3 px-6 py-5" style={{ borderBottom: '3px solid #afcb09' }}>
-                        <svg viewBox="0 0 24 24" style={{ width: '18px', height: '18px', opacity: 0.45, flexShrink: 0 }} fill="#afcb09"><path d="M17 8C8 10 5.9 16.17 3.82 19H5.71C6.39 17.73 7.29 16.54 8.5 15.59C12 13 16 11 21 12C21 12 21 8.5 17 8Z"/></svg>
+                      <div className="flex items-center justify-center gap-3 px-6 py-5" style={{ borderBottom: '3px solid #f6f4f5' }}>
+                        <svg viewBox="0 0 24 24" style={{ width: '18px', height: '18px', opacity: 0.45, flexShrink: 0 }} fill="#f6f4f5"><path d="M17 8C8 10 5.9 16.17 3.82 19H5.71C6.39 17.73 7.29 16.54 8.5 15.59C12 13 16 11 21 12C21 12 21 8.5 17 8Z"/></svg>
                         <img
-                          src="/thomas-moore-logo.png"
-                          alt="Thomas Moore Landscapes"
+                          src="/sculpt-logo.jpg"
+                          alt="Sculpt Landscapes"
                           style={{ height: '110px', width: 'auto', display: 'block' }}
                         />
-                        <svg viewBox="0 0 24 24" style={{ width: '18px', height: '18px', opacity: 0.45, flexShrink: 0, transform: 'scaleX(-1)' }} fill="#afcb09"><path d="M17 8C8 10 5.9 16.17 3.82 19H5.71C6.39 17.73 7.29 16.54 8.5 15.59C12 13 16 11 21 12C21 12 21 8.5 17 8Z"/></svg>
+                        <svg viewBox="0 0 24 24" style={{ width: '18px', height: '18px', opacity: 0.45, flexShrink: 0, transform: 'scaleX(-1)' }} fill="#f6f4f5"><path d="M17 8C8 10 5.9 16.17 3.82 19H5.71C6.39 17.73 7.29 16.54 8.5 15.59C12 13 16 11 21 12C21 12 21 8.5 17 8Z"/></svg>
                       </div>
                     </div>
 
@@ -592,7 +592,7 @@ function App() {
                       </p>
                       <p
                         className="font-black leading-none"
-                        style={{ fontSize: '3.75rem', color: '#2d2d2d', letterSpacing: '-3px' }}
+                        style={{ fontSize: '3.75rem', color: '#031904', letterSpacing: '-3px' }}
                       >
                         {formatCurrencyGBP(estimate.estimate)}
                       </p>
@@ -606,7 +606,7 @@ function App() {
                         >
                           <div
                             className="absolute inset-y-0 left-1/4 right-1/4 rounded-full"
-                            style={{ backgroundColor: '#afcb09' }}
+                            style={{ backgroundColor: '#f6f4f5' }}
                           />
                         </div>
                         <span className="text-xs tabular-nums" style={{ color: '#9ca3af' }}>
@@ -620,14 +620,14 @@ function App() {
                         <span
                           className="inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-wide"
                           style={{
-                            backgroundColor: '#afcb09',
-                            color: '#ffffff',
+                            backgroundColor: '#031904',
+                            color: '#f6f4f5',
                             border: 'none'
                           }}
                         >
                           {estimate.projectStatus}
                         </span>
-                        <p className="text-[11px]" style={{ color: '#2d2d2d' }}>
+                        <p className="text-[11px]" style={{ color: '#031904' }}>
                           Budget matches estimated cost
                         </p>
                       </div>
@@ -640,24 +640,24 @@ function App() {
                     <div className="px-6 py-5">
                       <div className="grid grid-cols-2 gap-x-6 gap-y-4">
                         <div>
-                          <p className="text-[10px] uppercase tracking-wide mb-0.5" style={{ color: '#afcb09' }}>Name</p>
-                          <p className="text-sm font-semibold" style={{ color: '#2d2d2d' }}>Daniel</p>
+                          <p className="text-[10px] uppercase tracking-wide mb-0.5" style={{ color: '#031904' }}>Name</p>
+                          <p className="text-sm font-semibold" style={{ color: '#031904' }}>Daniel</p>
                         </div>
                         <div>
-                          <p className="text-[10px] uppercase tracking-wide mb-0.5" style={{ color: '#afcb09' }}>Phone</p>
-                          <p className="text-sm font-semibold" style={{ color: '#2d2d2d' }}>{state.contactPhone || 'N/A'}</p>
+                          <p className="text-[10px] uppercase tracking-wide mb-0.5" style={{ color: '#031904' }}>Phone</p>
+                          <p className="text-sm font-semibold" style={{ color: '#031904' }}>{state.contactPhone || 'N/A'}</p>
                         </div>
                         <div>
-                          <p className="text-[10px] uppercase tracking-wide mb-0.5" style={{ color: '#afcb09' }}>Email</p>
-                          <p className="text-sm font-semibold" style={{ color: '#2d2d2d' }}>{state.contactEmail || 'N/A'}</p>
+                          <p className="text-[10px] uppercase tracking-wide mb-0.5" style={{ color: '#031904' }}>Email</p>
+                          <p className="text-sm font-semibold" style={{ color: '#031904' }}>{state.contactEmail || 'N/A'}</p>
                         </div>
                         <div>
-                          <p className="text-[10px] uppercase tracking-wide mb-0.5" style={{ color: '#afcb09' }}>Postcode</p>
-                          <p className="text-sm font-semibold" style={{ color: '#2d2d2d' }}>LS29 0AY</p>
+                          <p className="text-[10px] uppercase tracking-wide mb-0.5" style={{ color: '#031904' }}>Postcode</p>
+                          <p className="text-sm font-semibold" style={{ color: '#031904' }}>BD23 3LX</p>
                         </div>
                         <div>
-                          <p className="text-[10px] uppercase tracking-wide mb-0.5" style={{ color: '#afcb09' }}>Job Type</p>
-                          <p className="text-sm font-semibold" style={{ color: '#2d2d2d' }}>Patio</p>
+                          <p className="text-[10px] uppercase tracking-wide mb-0.5" style={{ color: '#031904' }}>Job Type</p>
+                          <p className="text-sm font-semibold" style={{ color: '#031904' }}>Patio</p>
                         </div>
                       </div>
                     </div>
@@ -669,14 +669,14 @@ function App() {
                     <div className="px-6 py-5">
                       <div className="grid grid-cols-2 gap-x-6">
                         <div>
-                          <p className="text-[10px] uppercase tracking-wide mb-0.5" style={{ color: '#afcb09' }}>Their budget</p>
-                          <p className="text-sm font-semibold" style={{ color: '#2d2d2d' }}>
+                          <p className="text-[10px] uppercase tracking-wide mb-0.5" style={{ color: '#031904' }}>Their budget</p>
+                          <p className="text-sm font-semibold" style={{ color: '#031904' }}>
                             {state.userBudget ? formatCurrencyGBP(state.userBudget) : 'N/A'}
                           </p>
                         </div>
                         <div>
-                          <p className="text-[10px] uppercase tracking-wide mb-0.5" style={{ color: '#afcb09' }}>Timeline</p>
-                          <p className="text-sm font-semibold" style={{ color: '#2d2d2d' }}>
+                          <p className="text-[10px] uppercase tracking-wide mb-0.5" style={{ color: '#031904' }}>Timeline</p>
+                          <p className="text-sm font-semibold" style={{ color: '#031904' }}>
                             {state.projectStartTiming || 'N/A'}
                           </p>
                         </div>
@@ -703,9 +703,9 @@ function App() {
               >
                 <div className="flex items-center gap-2">
                   <div className="flex gap-1">
-                    <div className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: '#afcb09' }}></div>
-                    <div className="w-2 h-2 rounded-full animate-pulse delay-75" style={{ backgroundColor: '#afcb09' }}></div>
-                    <div className="w-2 h-2 rounded-full animate-pulse delay-150" style={{ backgroundColor: '#afcb09' }}></div>
+                    <div className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: '#f6f4f5' }}></div>
+                    <div className="w-2 h-2 rounded-full animate-pulse delay-75" style={{ backgroundColor: '#f6f4f5' }}></div>
+                    <div className="w-2 h-2 rounded-full animate-pulse delay-150" style={{ backgroundColor: '#f6f4f5' }}></div>
                   </div>
                   <span className="text-xs" style={{ color: '#7ab8d0' }}>
                     Thinking...
@@ -756,8 +756,8 @@ function App() {
               disabled={isProcessing || !input.trim()}
               className="rounded-xl px-8 py-3 font-medium transition disabled:opacity-50"
               style={{
-                backgroundColor: '#afcb09',
-                color: '#2d2d2d'
+                backgroundColor: '#f6f4f5',
+                color: '#031904'
               }}
             >
               Send
@@ -794,7 +794,7 @@ function App() {
                   className="h-full transition-all duration-500"
                   style={{
                     width: `${state.certaintyLevel}%`,
-                    backgroundColor: state.certaintyLevel >= 85 ? '#afcb09' : '#afcb09'
+                    backgroundColor: state.certaintyLevel >= 85 ? '#f6f4f5' : '#f6f4f5'
                   }}
                 />
               </div>

@@ -3,13 +3,13 @@
 @layer base {
   :root {
     /* Green Horizon — Brand Theme */
-    --color-bg-primary: #ffffff;
+    --color-bg-primary: #031904;
     --color-bg-card: #1a3d5c;
-    --color-accent: #afcb09;
+    --color-accent: #f6f4f5;
     --color-text-primary: #d0eaf7;
     --color-text-secondary: #7ab8d0;
     --color-border: #1a5470;
-    --color-success: #afcb09;
+    --color-success: #f6f4f5;
     --color-warning: #D4A574;
     
     color-scheme: dark;
@@ -23,7 +23,7 @@
 
   body {
     @apply min-h-screen;
-    background-color: #ffffff;
+    background-color: #031904;
     color: #DAF1DE;
   }
 
@@ -32,7 +32,7 @@
   }
 
   a {
-    color: #afcb09;
+    color: #f6f4f5;
     text-decoration: underline;
     text-underline-offset: 4px;
   }
