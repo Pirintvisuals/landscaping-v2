@@ -575,7 +575,7 @@ function App() {
                         <img
                           src="/dcm-logo.jpg"
                           alt="DCM Surfaces"
-                          style={{ height: '68px', width: 'auto', display: 'block' }}
+                          style={{ height: '110px', width: 'auto', display: 'block' }}
                         />
                       </div>
                     </div>
