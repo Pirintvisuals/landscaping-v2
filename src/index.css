@@ -3,7 +3,7 @@
 @layer base {
   :root {
     /* Green Horizon — Brand Theme */
-    --color-bg-primary: #010e52;
+    --color-bg-primary: #394f20;
     --color-bg-card: #1a3d5c;
     --color-accent: #fc0002;
     --color-text-primary: #d0eaf7;
@@ -23,7 +23,7 @@
 
   body {
     @apply min-h-screen;
-    background-color: #010e52;
+    background-color: #394f20;
     color: #DAF1DE;
   }
 

@@ -91,7 +91,7 @@ function App() {
         { id: 'dm-19', role: 'agent', content: "And your email address?", timestamp: ts },
         { id: 'dm-20', role: 'user', content: "j.thornton@gmail.com", timestamp: ts },
         { id: 'dm-21', role: 'agent', content: "Your postcode?", timestamp: ts },
-        { id: 'dm-22', role: 'user', content: "PR25 5XW", timestamp: ts },
+        { id: 'dm-22', role: 'user', content: "HG5 0TG", timestamp: ts },
         { id: 'dm-23', role: 'agent', content: "What's your rough budget for this?", timestamp: ts },
         { id: 'dm-24', role: 'user', content: "Around £4,000", timestamp: ts },
         { id: 'dm-25', role: 'agent', content: "When are you looking to start?", timestamp: ts },
@@ -114,7 +114,7 @@ function App() {
         fullName: 'James Thornton',
         contactPhone: '07512 334 891',
         contactEmail: 'j.thornton@gmail.com',
-        postalCode: 'PR25 5XW',
+        postalCode: 'HG5 0TG',
         userBudget: 4000,
         projectStartTiming: 'Next 2-3 months'
       }))
@@ -480,13 +480,13 @@ function App() {
   const activeReplies = state.showQuickReplies ? quickReplies : getQuickReplies(state)
 
   return (
-    <div className="flex min-h-screen flex-col" style={{ backgroundColor: '#010e52' }}>
+    <div className="flex min-h-screen flex-col" style={{ backgroundColor: '#394f20' }}>
 
       {/* Header */}
       <header className="border-b p-4" style={{ backgroundColor: '#1a3d5c', borderColor: '#1a5470' }}>
         <div className="mx-auto max-w-4xl">
           <h1 className="text-xl font-bold" style={{ color: '#fc0002' }}>
-            DCM Surfaces
+            Mr Landscape Garden
           </h1>
           <p className="mt-1 text-sm" style={{ color: '#7ab8d0' }}>
             Green wall specialists | Vertical gardens | Living wall installations
@@ -508,7 +508,7 @@ function App() {
                     className="rounded-2xl p-4 max-w-[80%] shadow-sm"
                     style={{
                       backgroundColor: isScarcityAlert ? '#FFF4E5' : '#FFFFFF',
-                      color: isScarcityAlert ? '#B45309' : '#010e52',
+                      color: isScarcityAlert ? '#B45309' : '#394f20',
                       border: isScarcityAlert ? '2px solid #F59E0B' : '1px solid #125878',
                       boxShadow: isScarcityAlert ? '0 0 10px rgba(245, 158, 11, 0.2)' : '0 2px 5px rgba(0,0,0,0.05)'
                     }}
@@ -559,24 +559,26 @@ function App() {
                   >
 
                     {/* 1. New Enquiry bar + logo */}
-                    <div style={{ backgroundColor: '#010e52' }}>
+                    <div style={{ backgroundColor: '#394f20' }}>
                       <div
                         className="px-6 py-2.5 flex items-center justify-between"
                         style={{ backgroundColor: '#fc0002' }}
                       >
-                        <span className="text-sm font-black tracking-wide uppercase" style={{ color: '#010e52' }}>
+                        <span className="text-sm font-black tracking-wide uppercase" style={{ color: '#394f20' }}>
                           New Enquiry
                         </span>
-                        <span className="text-[11px] font-medium" style={{ color: '#010e52', opacity: 0.65 }}>
+                        <span className="text-[11px] font-medium" style={{ color: '#394f20', opacity: 0.65 }}>
                           Today at {new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: true })}
                         </span>
                       </div>
-                      <div className="flex items-center justify-center px-6 py-5" style={{ borderBottom: '3px solid #fc0002' }}>
+                      <div className="flex items-center justify-center gap-3 px-6 py-5" style={{ borderBottom: '3px solid #fc0002' }}>
+                        <svg viewBox="0 0 24 24" style={{ width: '18px', height: '18px', opacity: 0.45, flexShrink: 0 }} fill="#394f20"><path d="M17 8C8 10 5.9 16.17 3.82 19H5.71C6.39 17.73 7.29 16.54 8.5 15.59C12 13 16 11 21 12C21 12 21 8.5 17 8Z"/></svg>
                         <img
-                          src="/dcm-logo.jpg"
-                          alt="DCM Surfaces"
+                          src="/mr-logo.jpg"
+                          alt="Mr Landscape Garden"
                           style={{ height: '110px', width: 'auto', display: 'block' }}
                         />
+                        <svg viewBox="0 0 24 24" style={{ width: '18px', height: '18px', opacity: 0.45, flexShrink: 0, transform: 'scaleX(-1)' }} fill="#394f20"><path d="M17 8C8 10 5.9 16.17 3.82 19H5.71C6.39 17.73 7.29 16.54 8.5 15.59C12 13 16 11 21 12C21 12 21 8.5 17 8Z"/></svg>
                       </div>
                     </div>
 
@@ -590,7 +592,7 @@ function App() {
                       </p>
                       <p
                         className="font-black leading-none"
-                        style={{ fontSize: '3.75rem', color: '#010e52', letterSpacing: '-3px' }}
+                        style={{ fontSize: '3.75rem', color: '#394f20', letterSpacing: '-3px' }}
                       >
                         {formatCurrencyGBP(estimate.estimate)}
                       </p>
@@ -618,14 +620,14 @@ function App() {
                         <span
                           className="inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-wide"
                           style={{
-                            backgroundColor: '#010e52',
+                            backgroundColor: '#394f20',
                             color: '#ffffff',
                             border: 'none'
                           }}
                         >
                           {estimate.projectStatus}
                         </span>
-                        <p className="text-[11px]" style={{ color: '#010e52' }}>
+                        <p className="text-[11px]" style={{ color: '#394f20' }}>
                           Budget matches estimated cost
                         </p>
                       </div>
@@ -638,20 +640,20 @@ function App() {
                     <div className="px-6 py-5">
                       <div className="grid grid-cols-2 gap-x-6 gap-y-4">
                         <div>
-                          <p className="text-[10px] uppercase tracking-wide mb-0.5" style={{ color: '#010e52' }}>Name</p>
-                          <p className="text-sm font-semibold" style={{ color: '#010e52' }}>James</p>
+                          <p className="text-[10px] uppercase tracking-wide mb-0.5" style={{ color: '#394f20' }}>Name</p>
+                          <p className="text-sm font-semibold" style={{ color: '#394f20' }}>James</p>
                         </div>
                         <div>
-                          <p className="text-[10px] uppercase tracking-wide mb-0.5" style={{ color: '#010e52' }}>Phone</p>
-                          <p className="text-sm font-semibold" style={{ color: '#010e52' }}>{state.contactPhone || 'N/A'}</p>
+                          <p className="text-[10px] uppercase tracking-wide mb-0.5" style={{ color: '#394f20' }}>Phone</p>
+                          <p className="text-sm font-semibold" style={{ color: '#394f20' }}>{state.contactPhone || 'N/A'}</p>
                         </div>
                         <div>
-                          <p className="text-[10px] uppercase tracking-wide mb-0.5" style={{ color: '#010e52' }}>Email</p>
-                          <p className="text-sm font-semibold" style={{ color: '#010e52' }}>{state.contactEmail || 'N/A'}</p>
+                          <p className="text-[10px] uppercase tracking-wide mb-0.5" style={{ color: '#394f20' }}>Email</p>
+                          <p className="text-sm font-semibold" style={{ color: '#394f20' }}>{state.contactEmail || 'N/A'}</p>
                         </div>
                         <div>
-                          <p className="text-[10px] uppercase tracking-wide mb-0.5" style={{ color: '#010e52' }}>Postcode</p>
-                          <p className="text-sm font-semibold" style={{ color: '#010e52' }}>PR25 5XW</p>
+                          <p className="text-[10px] uppercase tracking-wide mb-0.5" style={{ color: '#394f20' }}>Postcode</p>
+                          <p className="text-sm font-semibold" style={{ color: '#394f20' }}>HG5 0TG</p>
                         </div>
                       </div>
                     </div>
@@ -663,14 +665,14 @@ function App() {
                     <div className="px-6 py-5">
                       <div className="grid grid-cols-2 gap-x-6">
                         <div>
-                          <p className="text-[10px] uppercase tracking-wide mb-0.5" style={{ color: '#010e52' }}>Their budget</p>
-                          <p className="text-sm font-semibold" style={{ color: '#010e52' }}>
+                          <p className="text-[10px] uppercase tracking-wide mb-0.5" style={{ color: '#394f20' }}>Their budget</p>
+                          <p className="text-sm font-semibold" style={{ color: '#394f20' }}>
                             {state.userBudget ? formatCurrencyGBP(state.userBudget) : 'N/A'}
                           </p>
                         </div>
                         <div>
-                          <p className="text-[10px] uppercase tracking-wide mb-0.5" style={{ color: '#010e52' }}>Timeline</p>
-                          <p className="text-sm font-semibold" style={{ color: '#010e52' }}>
+                          <p className="text-[10px] uppercase tracking-wide mb-0.5" style={{ color: '#394f20' }}>Timeline</p>
+                          <p className="text-sm font-semibold" style={{ color: '#394f20' }}>
                             {state.projectStartTiming || 'N/A'}
                           </p>
                         </div>
@@ -740,7 +742,7 @@ function App() {
               disabled={isProcessing}
               className="flex-1 rounded-xl px-5 py-3 text-sm focus:outline-none focus:ring-2"
               style={{
-                backgroundColor: '#010e52',
+                backgroundColor: '#394f20',
                 color: '#DAF1DE',
                 border: '1px solid #1a5470'
               }}
@@ -751,7 +753,7 @@ function App() {
               className="rounded-xl px-8 py-3 font-medium transition disabled:opacity-50"
               style={{
                 backgroundColor: '#fc0002',
-                color: '#010e52'
+                color: '#394f20'
               }}
             >
               Send
