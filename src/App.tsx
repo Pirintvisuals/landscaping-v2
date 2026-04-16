@@ -28,19 +28,19 @@ import { estimatorSchema, contactSchema } from './schemas/estimator'
 const DEMO_MODE = true
 
 const DEMO_ESTIMATE: EstimateResult = {
-  lowerBound: 6660,
-  estimate: 7400,
-  upperBound: 8510,
+  lowerBound: 3780,
+  estimate: 4200,
+  upperBound: 4830,
   lineItems: [
-    { label: 'Living Wall Framework System', amount: 2160, note: '18.0m² × £120/m²', kind: 'material' },
-    { label: 'Plants & Growing Media', amount: 1530, note: '18.0m² × £85/m²', kind: 'material' },
-    { label: 'Automated Irrigation System', amount: 850, note: 'timer-controlled drip feed', kind: 'material' },
-    { label: 'Installation Labour', amount: 1050, note: '14hrs × £75.00/hr', kind: 'labor' },
-    { label: 'Project Management', amount: 559, note: '10% overhead (QC, site supervision)', kind: 'fee' },
-    { label: 'Contingency Reserve', amount: 280, note: '5% contingency allowance', kind: 'fee' },
-    { label: 'Net Profit Margin', amount: 971, note: '15% net profit', kind: 'fee' }
+    { label: 'Resin Aggregate & Binder', amount: 1440, note: '40m² × £36/m²', kind: 'material' },
+    { label: 'MOT Type 1 Sub-base', amount: 680, note: '40m² × £17/m²', kind: 'material' },
+    { label: 'Edging & Border Restraints', amount: 320, note: 'perimeter installation', kind: 'material' },
+    { label: 'Installation Labour', amount: 1080, note: '14.4hrs × £75.00/hr', kind: 'labor' },
+    { label: 'Project Management', amount: 252, note: '7% overhead', kind: 'fee' },
+    { label: 'Contingency Reserve', amount: 168, note: '4% contingency allowance', kind: 'fee' },
+    { label: 'Net Profit Margin', amount: 260, note: '8% net profit', kind: 'fee' }
   ],
-  reasoning: `Materials: Premium tier living wall system specified. Framework, plants, and growing media included.\n\nLogistics: Standard wall-mounted access confirmed. No scaffold required.\n\nStability: Structural wall fixings and waterproof backing included.\n\nIntegrity: 10% Project Management and 5% Contingency included for QC standards.`,
+  reasoning: `Materials: Premium resin bound system. UV-stable aggregate with SuDS-compliant permeable finish.\n\nLogistics: Clear driveway access confirmed. No excavation complications anticipated.\n\nIntegrity: 7% Project Management and 4% Contingency included for QC standards.`,
   projectStatus: 'VIP PRIORITY'
 }
 // ─────────────────────────────────────────────────────────────────────────────
@@ -71,32 +71,32 @@ function App() {
       const ts = new Date()
       const demoMessages: ChatMessage[] = [
         { id: 'dm-1', role: 'agent', content: "What kind of work are you looking to get done?", timestamp: ts },
-        { id: 'dm-2', role: 'user', content: "I want a green wall installed on the side of my house", timestamp: ts },
-        { id: 'dm-3', role: 'agent', content: "Great. Living walls make a real difference to a property. How large is the wall you have in mind? Rough dimensions are fine.", timestamp: ts },
-        { id: 'dm-4', role: 'user', content: "About 6 metres wide by 3 metres high, so around 18 square metres", timestamp: ts },
-        { id: 'dm-5', role: 'agent', content: "18m² noted. What level of finish were you thinking? Basic planting, premium specimens, or a full architectural design?", timestamp: ts },
-        { id: 'dm-6', role: 'user', content: "Premium, something that looks really established", timestamp: ts },
-        { id: 'dm-7', role: 'agent', content: "Is there easy access to the wall for installation?", timestamp: ts },
-        { id: 'dm-8', role: 'user', content: "Yes, side access is fine", timestamp: ts },
-        { id: 'dm-9', role: 'agent', content: "Is there somewhere nearby to park a van and unload materials?", timestamp: ts },
-        { id: 'dm-10', role: 'user', content: "Yes, driveway out front", timestamp: ts },
-        { id: 'dm-11', role: 'agent', content: "Is the wall on flat ground or is there a slope to contend with?", timestamp: ts },
+        { id: 'dm-2', role: 'user', content: "Looking to get a resin bound driveway done", timestamp: ts },
+        { id: 'dm-3', role: 'agent', content: "Great choice. Resin bound is low maintenance and looks smart. Roughly how big is the driveway? Dimensions are fine.", timestamp: ts },
+        { id: 'dm-4', role: 'user', content: "About 8 metres by 5 metres, so 40 square metres", timestamp: ts },
+        { id: 'dm-5', role: 'agent', content: "40m² noted. Premium finish or standard?", timestamp: ts },
+        { id: 'dm-6', role: 'user', content: "Premium please", timestamp: ts },
+        { id: 'dm-7', role: 'agent', content: "Is there easy vehicle access to the driveway area?", timestamp: ts },
+        { id: 'dm-8', role: 'user', content: "Yes, open fronted", timestamp: ts },
+        { id: 'dm-9', role: 'agent', content: "Room to park a van and unload materials nearby?", timestamp: ts },
+        { id: 'dm-10', role: 'user', content: "Yes plenty of space", timestamp: ts },
+        { id: 'dm-11', role: 'agent', content: "Is the ground flat or is there any slope?", timestamp: ts },
         { id: 'dm-12', role: 'user', content: "Flat", timestamp: ts },
-        { id: 'dm-13', role: 'agent', content: "Anything currently on the wall that needs removing first?", timestamp: ts },
-        { id: 'dm-14', role: 'user', content: "No, just bare brick at the moment", timestamp: ts },
+        { id: 'dm-13', role: 'agent', content: "Anything on the driveway currently that needs breaking up and removing?", timestamp: ts },
+        { id: 'dm-14', role: 'user', content: "No, just gravel at the moment", timestamp: ts },
         { id: 'dm-15', role: 'agent', content: "What's your full name?", timestamp: ts },
-        { id: 'dm-16', role: 'user', content: "Andrew Walker", timestamp: ts },
-        { id: 'dm-17', role: 'agent', content: "Thanks Andrew. Best phone number?", timestamp: ts },
-        { id: 'dm-18', role: 'user', content: "07823 461 052", timestamp: ts },
+        { id: 'dm-16', role: 'user', content: "James Thornton", timestamp: ts },
+        { id: 'dm-17', role: 'agent', content: "Thanks James. Best phone number?", timestamp: ts },
+        { id: 'dm-18', role: 'user', content: "07512 334 891", timestamp: ts },
         { id: 'dm-19', role: 'agent', content: "And your email address?", timestamp: ts },
-        { id: 'dm-20', role: 'user', content: "a.walker@hotmail.com", timestamp: ts },
+        { id: 'dm-20', role: 'user', content: "j.thornton@gmail.com", timestamp: ts },
         { id: 'dm-21', role: 'agent', content: "Your postcode?", timestamp: ts },
-        { id: 'dm-22', role: 'user', content: "NE37 2HQ", timestamp: ts },
-        { id: 'dm-23', role: 'agent', content: "What's your rough budget for this project?", timestamp: ts },
-        { id: 'dm-24', role: 'user', content: "£6,000 to £8,000", timestamp: ts },
+        { id: 'dm-22', role: 'user', content: "PR25 5XW", timestamp: ts },
+        { id: 'dm-23', role: 'agent', content: "What's your rough budget for this?", timestamp: ts },
+        { id: 'dm-24', role: 'user', content: "Around £4,000", timestamp: ts },
         { id: 'dm-25', role: 'agent', content: "When are you looking to start?", timestamp: ts },
-        { id: 'dm-26', role: 'user', content: "Next 2 to 3 months", timestamp: ts },
-        { id: 'dm-27', role: 'agent', content: "Thanks Andrew, putting your estimate together now...", timestamp: ts },
+        { id: 'dm-26', role: 'user', content: "Next month if possible", timestamp: ts },
+        { id: 'dm-27', role: 'agent', content: "Thanks James, putting your estimate together now...", timestamp: ts },
         { id: 'dm-28', role: 'estimate', content: '', timestamp: ts }
       ]
       setState(prev => ({
@@ -111,11 +111,11 @@ function App() {
         hasDrivewayForSkip: true,
         slopeLevel: 'flat',
         existingDemolition: false,
-        fullName: 'Andrew Walker',
-        contactPhone: '07823 461 052',
-        contactEmail: 'a.walker@hotmail.com',
-        postalCode: 'NE37 2HQ',
-        userBudget: 7000,
+        fullName: 'James Thornton',
+        contactPhone: '07512 334 891',
+        contactEmail: 'j.thornton@gmail.com',
+        postalCode: 'PR25 5XW',
+        userBudget: 4000,
         projectStartTiming: 'Next 2-3 months'
       }))
       setEstimate(DEMO_ESTIMATE)
@@ -480,13 +480,13 @@ function App() {
   const activeReplies = state.showQuickReplies ? quickReplies : getQuickReplies(state)
 
   return (
-    <div className="flex min-h-screen flex-col" style={{ backgroundColor: '#185078' }}>
+    <div className="flex min-h-screen flex-col" style={{ backgroundColor: '#010e52' }}>
 
       {/* Header */}
       <header className="border-b p-4" style={{ backgroundColor: '#1a3d5c', borderColor: '#1a5470' }}>
         <div className="mx-auto max-w-4xl">
-          <h1 className="text-xl font-bold" style={{ color: '#60f305' }}>
-            Green Horizon
+          <h1 className="text-xl font-bold" style={{ color: '#fc0002' }}>
+            DCM Surfaces
           </h1>
           <p className="mt-1 text-sm" style={{ color: '#7ab8d0' }}>
             Green wall specialists | Vertical gardens | Living wall installations
@@ -508,7 +508,7 @@ function App() {
                     className="rounded-2xl p-4 max-w-[80%] shadow-sm"
                     style={{
                       backgroundColor: isScarcityAlert ? '#FFF4E5' : '#FFFFFF',
-                      color: isScarcityAlert ? '#B45309' : '#185078',
+                      color: isScarcityAlert ? '#B45309' : '#010e52',
                       border: isScarcityAlert ? '2px solid #F59E0B' : '1px solid #125878',
                       boxShadow: isScarcityAlert ? '0 0 10px rgba(245, 158, 11, 0.2)' : '0 2px 5px rgba(0,0,0,0.05)'
                     }}
@@ -559,22 +559,22 @@ function App() {
                   >
 
                     {/* 1. New Enquiry bar + logo */}
-                    <div style={{ backgroundColor: '#185078' }}>
+                    <div style={{ backgroundColor: '#010e52' }}>
                       <div
                         className="px-6 py-2.5 flex items-center justify-between"
-                        style={{ backgroundColor: '#60f305' }}
+                        style={{ backgroundColor: '#fc0002' }}
                       >
-                        <span className="text-sm font-black tracking-wide uppercase" style={{ color: '#185078' }}>
+                        <span className="text-sm font-black tracking-wide uppercase" style={{ color: '#010e52' }}>
                           New Enquiry
                         </span>
-                        <span className="text-[11px] font-medium" style={{ color: '#185078', opacity: 0.65 }}>
+                        <span className="text-[11px] font-medium" style={{ color: '#010e52', opacity: 0.65 }}>
                           Today at {new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: true })}
                         </span>
                       </div>
-                      <div className="flex items-center justify-center px-6 py-5" style={{ borderBottom: '3px solid #60f305' }}>
+                      <div className="flex items-center justify-center px-6 py-5" style={{ borderBottom: '3px solid #fc0002' }}>
                         <img
-                          src="/green-horizon-logo.png"
-                          alt="Green Horizon"
+                          src="/dcm-logo.jpg"
+                          alt="DCM Surfaces"
                           style={{ height: '68px', width: 'auto', display: 'block' }}
                         />
                       </div>
@@ -590,7 +590,7 @@ function App() {
                       </p>
                       <p
                         className="font-black leading-none"
-                        style={{ fontSize: '3.75rem', color: '#185078', letterSpacing: '-3px' }}
+                        style={{ fontSize: '3.75rem', color: '#010e52', letterSpacing: '-3px' }}
                       >
                         {formatCurrencyGBP(estimate.estimate)}
                       </p>
@@ -604,7 +604,7 @@ function App() {
                         >
                           <div
                             className="absolute inset-y-0 left-1/4 right-1/4 rounded-full"
-                            style={{ backgroundColor: '#60f305' }}
+                            style={{ backgroundColor: '#fc0002' }}
                           />
                         </div>
                         <span className="text-xs tabular-nums" style={{ color: '#9ca3af' }}>
@@ -618,14 +618,14 @@ function App() {
                         <span
                           className="inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-wide"
                           style={{
-                            backgroundColor: '#185078',
+                            backgroundColor: '#010e52',
                             color: '#ffffff',
                             border: 'none'
                           }}
                         >
                           {estimate.projectStatus}
                         </span>
-                        <p className="text-[11px]" style={{ color: '#185078' }}>
+                        <p className="text-[11px]" style={{ color: '#010e52' }}>
                           Budget matches estimated cost
                         </p>
                       </div>
@@ -638,20 +638,20 @@ function App() {
                     <div className="px-6 py-5">
                       <div className="grid grid-cols-2 gap-x-6 gap-y-4">
                         <div>
-                          <p className="text-[10px] uppercase tracking-wide mb-0.5" style={{ color: '#185078' }}>Name</p>
-                          <p className="text-sm font-semibold" style={{ color: '#185078' }}>Andrew</p>
+                          <p className="text-[10px] uppercase tracking-wide mb-0.5" style={{ color: '#010e52' }}>Name</p>
+                          <p className="text-sm font-semibold" style={{ color: '#010e52' }}>James</p>
                         </div>
                         <div>
-                          <p className="text-[10px] uppercase tracking-wide mb-0.5" style={{ color: '#185078' }}>Phone</p>
-                          <p className="text-sm font-semibold" style={{ color: '#185078' }}>{state.contactPhone || 'N/A'}</p>
+                          <p className="text-[10px] uppercase tracking-wide mb-0.5" style={{ color: '#010e52' }}>Phone</p>
+                          <p className="text-sm font-semibold" style={{ color: '#010e52' }}>{state.contactPhone || 'N/A'}</p>
                         </div>
                         <div>
-                          <p className="text-[10px] uppercase tracking-wide mb-0.5" style={{ color: '#185078' }}>Email</p>
-                          <p className="text-sm font-semibold" style={{ color: '#185078' }}>{state.contactEmail || 'N/A'}</p>
+                          <p className="text-[10px] uppercase tracking-wide mb-0.5" style={{ color: '#010e52' }}>Email</p>
+                          <p className="text-sm font-semibold" style={{ color: '#010e52' }}>{state.contactEmail || 'N/A'}</p>
                         </div>
                         <div>
-                          <p className="text-[10px] uppercase tracking-wide mb-0.5" style={{ color: '#185078' }}>Postcode</p>
-                          <p className="text-sm font-semibold" style={{ color: '#185078' }}>NE37 2HQ</p>
+                          <p className="text-[10px] uppercase tracking-wide mb-0.5" style={{ color: '#010e52' }}>Postcode</p>
+                          <p className="text-sm font-semibold" style={{ color: '#010e52' }}>PR25 5XW</p>
                         </div>
                       </div>
                     </div>
@@ -663,14 +663,14 @@ function App() {
                     <div className="px-6 py-5">
                       <div className="grid grid-cols-2 gap-x-6">
                         <div>
-                          <p className="text-[10px] uppercase tracking-wide mb-0.5" style={{ color: '#185078' }}>Their budget</p>
-                          <p className="text-sm font-semibold" style={{ color: '#185078' }}>
+                          <p className="text-[10px] uppercase tracking-wide mb-0.5" style={{ color: '#010e52' }}>Their budget</p>
+                          <p className="text-sm font-semibold" style={{ color: '#010e52' }}>
                             {state.userBudget ? formatCurrencyGBP(state.userBudget) : 'N/A'}
                           </p>
                         </div>
                         <div>
-                          <p className="text-[10px] uppercase tracking-wide mb-0.5" style={{ color: '#185078' }}>Timeline</p>
-                          <p className="text-sm font-semibold" style={{ color: '#185078' }}>
+                          <p className="text-[10px] uppercase tracking-wide mb-0.5" style={{ color: '#010e52' }}>Timeline</p>
+                          <p className="text-sm font-semibold" style={{ color: '#010e52' }}>
                             {state.projectStartTiming || 'N/A'}
                           </p>
                         </div>
@@ -697,9 +697,9 @@ function App() {
               >
                 <div className="flex items-center gap-2">
                   <div className="flex gap-1">
-                    <div className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: '#60f305' }}></div>
-                    <div className="w-2 h-2 rounded-full animate-pulse delay-75" style={{ backgroundColor: '#60f305' }}></div>
-                    <div className="w-2 h-2 rounded-full animate-pulse delay-150" style={{ backgroundColor: '#60f305' }}></div>
+                    <div className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: '#fc0002' }}></div>
+                    <div className="w-2 h-2 rounded-full animate-pulse delay-75" style={{ backgroundColor: '#fc0002' }}></div>
+                    <div className="w-2 h-2 rounded-full animate-pulse delay-150" style={{ backgroundColor: '#fc0002' }}></div>
                   </div>
                   <span className="text-xs" style={{ color: '#7ab8d0' }}>
                     Thinking...
@@ -740,7 +740,7 @@ function App() {
               disabled={isProcessing}
               className="flex-1 rounded-xl px-5 py-3 text-sm focus:outline-none focus:ring-2"
               style={{
-                backgroundColor: '#185078',
+                backgroundColor: '#010e52',
                 color: '#DAF1DE',
                 border: '1px solid #1a5470'
               }}
@@ -750,8 +750,8 @@ function App() {
               disabled={isProcessing || !input.trim()}
               className="rounded-xl px-8 py-3 font-medium transition disabled:opacity-50"
               style={{
-                backgroundColor: '#60f305',
-                color: '#185078'
+                backgroundColor: '#fc0002',
+                color: '#010e52'
               }}
             >
               Send
@@ -788,7 +788,7 @@ function App() {
                   className="h-full transition-all duration-500"
                   style={{
                     width: `${state.certaintyLevel}%`,
-                    backgroundColor: state.certaintyLevel >= 85 ? '#60f305' : '#60f305'
+                    backgroundColor: state.certaintyLevel >= 85 ? '#fc0002' : '#fc0002'
                   }}
                 />
               </div>
