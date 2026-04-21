@@ -133,6 +133,7 @@ function App() {
     }
   }, [])
 
+  // @ts-ignore – intentionally unused, kept for future reference
   const _handleSubmitLead = async () => {
     if (!estimate) return
 
@@ -647,6 +648,14 @@ function App() {
                           <p className="text-sm font-semibold" style={{ color: '#111111' }}>{state.projectStartTiming || 'N/A'}</p>
                         </div>
                       </div>
+                    </div>
+
+                    {/* Divider */}
+                    <div className="mx-6" style={{ borderTop: '1px solid rgba(0,0,0,0.12)' }} />
+
+                    {/* Bottom logo */}
+                    <div className="flex items-center justify-center px-6 py-6">
+                      <img src="/dc-landscaping-logo.png" alt="Dc landscaping Lytham" style={{ height: '100px', width: 'auto', display: 'block' }} />
                     </div>
 
                   </div>
