@@ -75,6 +75,7 @@ function App() {
   const [estimate, setEstimate] = useState<EstimateResult | null>(null)
   const [quickReplies, setQuickReplies] = useState<QuickReply[]>([])
   const [isOpen, setIsOpen] = useState(true)
+  const [showFullCard, setShowFullCard] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
   const [_emailSent, setEmailSent] = useState(false)
@@ -559,138 +560,162 @@ function App() {
                 if (message.role === 'estimate' && estimate) {
                   return (
                     <div key={message.id} style={{ margin: '4px 0' }}>
-                      <div style={{
-                        backgroundColor: '#ffffff',
-                        borderRadius: '16px',
-                        overflow: 'hidden',
-                        border: '1px solid #86efac',
-                        boxShadow: '0 8px 30px rgba(21,128,61,0.15)'
-                      }}>
 
-                        {/* New Enquiry bar */}
+                      {/* ── SIMPLE QUOTE VIEW (default) ── */}
+                      {!showFullCard && (
                         <div style={{
-                          backgroundColor: '#14532d',
-                          padding: '8px 16px',
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                          alignItems: 'center'
+                          backgroundColor: '#ffffff',
+                          borderRadius: '16px',
+                          overflow: 'hidden',
+                          border: '1px solid #86efac',
+                          boxShadow: '0 8px 30px rgba(21,128,61,0.15)'
                         }}>
-                          <span style={{ color: '#ffffff', fontWeight: 800, fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-                            New Enquiry
-                          </span>
-                          <span style={{ color: '#86efac', fontSize: '10px' }}>
-                            Today at {new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: true })}
-                          </span>
-                        </div>
-
-                        {/* Logo */}
-                        <div style={{
-                          backgroundColor: '#f0fdf4',
-                          padding: '14px',
-                          display: 'flex',
-                          justifyContent: 'center',
-                          borderBottom: '1px solid #bbf7d0'
-                        }}>
-                          <img
-                            src="/tree-hedge-care-logo.jpg"
-                            alt="Tree Hedge Care"
-                            style={{ height: '64px', width: 'auto' }}
-                          />
-                        </div>
-
-                        {/* Estimate amount */}
-                        <div style={{ padding: '18px 20px 10px', textAlign: 'center', backgroundColor: '#ffffff' }}>
-                          <p style={{ fontSize: '10px', color: '#9ca3af', textTransform: 'uppercase', letterSpacing: '0.18em', marginBottom: '4px', margin: '0 0 4px' }}>
-                            Estimated Cost
-                          </p>
-                          <p style={{ fontSize: '3.2rem', fontWeight: 900, color: '#15803d', letterSpacing: '-2px', lineHeight: 1, margin: 0 }}>
-                            {formatCurrencyGBP(estimate.estimate)}
-                          </p>
-                          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', marginTop: '8px' }}>
-                            <span style={{ fontSize: '11px', color: '#9ca3af' }}>{formatCurrencyGBP(estimate.lowerBound)}</span>
-                            <div style={{ flex: 1, maxWidth: '70px', height: '4px', borderRadius: '2px', backgroundColor: '#dcfce7', position: 'relative' }}>
-                              <div style={{ position: 'absolute', top: 0, bottom: 0, left: '25%', right: '25%', backgroundColor: '#16a34a', borderRadius: '2px' }} />
-                            </div>
-                            <span style={{ fontSize: '11px', color: '#9ca3af' }}>{formatCurrencyGBP(estimate.upperBound)}</span>
+                          {/* Header */}
+                          <div style={{ backgroundColor: '#14532d', padding: '10px 16px' }}>
+                            <p style={{ color: '#ffffff', fontWeight: 800, fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.1em', margin: 0 }}>
+                              Your Rough Quote
+                            </p>
                           </div>
-                          <p style={{ fontSize: '10px', color: '#9ca3af', margin: '4px 0 0' }}>indicative range</p>
-                        </div>
 
-                        {/* Lead Score */}
-                        <div style={{
-                          padding: '10px 20px',
-                          backgroundColor: '#f0fdf4',
-                          borderTop: '1px solid #dcfce7',
-                          borderBottom: '1px solid #dcfce7'
-                        }}>
-                          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '6px' }}>
-                            <span style={{ fontSize: '10px', color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-                              Lead Quality Score
-                            </span>
-                            <span style={{ fontSize: '13px', fontWeight: 700, color: getScoreColor(leadScore) }}>
-                              {leadScore}/100 — {getScoreLabel(leadScore)}
-                            </span>
+                          {/* Big price */}
+                          <div style={{ padding: '18px 20px 12px', textAlign: 'center' }}>
+                            <p style={{ fontSize: '3rem', fontWeight: 900, color: '#15803d', letterSpacing: '-2px', lineHeight: 1, margin: 0 }}>
+                              {formatCurrencyGBP(estimate.estimate)}
+                            </p>
+                            <p style={{ fontSize: '11px', color: '#9ca3af', margin: '4px 0 0' }}>
+                              Range: {formatCurrencyGBP(estimate.lowerBound)} – {formatCurrencyGBP(estimate.upperBound)}
+                            </p>
                           </div>
-                          <div style={{ height: '6px', borderRadius: '3px', backgroundColor: '#dcfce7', overflow: 'hidden' }}>
-                            <div style={{
-                              height: '100%',
-                              width: `${leadScore}%`,
-                              backgroundColor: getScoreColor(leadScore),
-                              borderRadius: '3px',
-                              transition: 'width 0.5s ease'
-                            }} />
-                          </div>
-                        </div>
 
-                        {/* Customer details */}
-                        <div style={{ padding: '14px 20px', backgroundColor: '#ffffff' }}>
-                          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-                            {[
-                              ['Name', state.fullName || 'N/A'],
-                              ['Phone', state.contactPhone || 'N/A'],
-                              ['Email', state.contactEmail || 'N/A'],
-                              ['Postcode', state.postalCode || 'N/A'],
-                              ['Job Type', 'Hedge Trimming'],
-                              ['Their Budget', state.userBudget ? formatCurrencyGBP(state.userBudget) : 'N/A'],
-                            ].map(([label, val]) => (
-                              <div key={label}>
-                                <p style={{ fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#9ca3af', margin: '0 0 2px' }}>{label}</p>
-                                <p style={{ fontSize: '12px', fontWeight: 600, color: '#111827', margin: 0 }}>{val}</p>
+                          {/* Breakdown */}
+                          <div style={{ padding: '4px 20px 14px', borderTop: '1px solid #f0fdf4' }}>
+                            <p style={{ fontSize: '10px', color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.1em', margin: '0 0 8px' }}>How it's calculated</p>
+                            {estimate.lineItems.map((item, i) => (
+                              <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '5px' }}>
+                                <div>
+                                  <span style={{ fontSize: '12px', color: '#111827', fontWeight: 500 }}>{item.label}</span>
+                                  {item.note && <span style={{ fontSize: '10px', color: '#9ca3af', marginLeft: '5px' }}>({item.note})</span>}
+                                </div>
+                                <span style={{ fontSize: '12px', fontWeight: 700, color: '#15803d', flexShrink: 0, marginLeft: '8px' }}>{formatCurrencyGBP(item.amount)}</span>
                               </div>
                             ))}
                           </div>
-                        </div>
 
-                        {/* Timeline */}
-                        <div style={{ padding: '6px 20px 14px', backgroundColor: '#ffffff', borderTop: '1px solid #f0fdf4' }}>
-                          <p style={{ fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#9ca3af', margin: '0 0 2px' }}>Timeline</p>
-                          <p style={{ fontSize: '12px', fontWeight: 600, color: '#111827', margin: 0 }}>{state.projectStartTiming || 'N/A'}</p>
+                          {/* Send to John button */}
+                          <div style={{ padding: '12px 20px 16px', backgroundColor: '#f0fdf4', borderTop: '1px solid #86efac' }}>
+                            <button
+                              onClick={() => setShowFullCard(true)}
+                              style={{
+                                width: '100%',
+                                padding: '13px',
+                                backgroundColor: '#15803d',
+                                color: '#ffffff',
+                                border: 'none',
+                                borderRadius: '10px',
+                                fontWeight: 800,
+                                fontSize: '13px',
+                                cursor: 'pointer',
+                                letterSpacing: '0.04em',
+                                boxShadow: '0 4px 12px rgba(21,128,61,0.35)'
+                              }}
+                            >
+                              Send to John
+                            </button>
+                          </div>
                         </div>
+                      )}
 
-                        {/* SEND TO TREE HEDGE CARE button */}
-                        <div style={{ padding: '12px 20px 16px', backgroundColor: '#f0fdf4', borderTop: '1px solid #86efac' }}>
-                          <button
-                            onClick={() => { }}
-                            style={{
-                              width: '100%',
-                              padding: '13px',
-                              backgroundColor: '#15803d',
-                              color: '#ffffff',
-                              border: 'none',
-                              borderRadius: '10px',
-                              fontWeight: 800,
-                              fontSize: '12px',
-                              cursor: 'pointer',
-                              letterSpacing: '0.06em',
-                              textTransform: 'uppercase',
-                              boxShadow: '0 4px 12px rgba(21,128,61,0.35)'
-                            }}
-                          >
-                            SEND TO TREE HEDGE CARE
-                          </button>
+                      {/* ── FULL CRM CARD (after clicking Send to John) ── */}
+                      {showFullCard && (
+                        <div style={{
+                          backgroundColor: '#ffffff',
+                          borderRadius: '16px',
+                          overflow: 'hidden',
+                          border: '1px solid #86efac',
+                          boxShadow: '0 8px 30px rgba(21,128,61,0.15)',
+                          animation: 'slideDown 0.3s ease'
+                        }}>
+                          {/* New Enquiry bar */}
+                          <div style={{
+                            backgroundColor: '#14532d',
+                            padding: '8px 16px',
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'center'
+                          }}>
+                            <span style={{ color: '#ffffff', fontWeight: 800, fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+                              New Enquiry
+                            </span>
+                            <span style={{ color: '#86efac', fontSize: '10px' }}>
+                              Today at {new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: true })}
+                            </span>
+                          </div>
+
+                          {/* Logo */}
+                          <div style={{ backgroundColor: '#f0fdf4', padding: '14px', display: 'flex', justifyContent: 'center', borderBottom: '1px solid #bbf7d0' }}>
+                            <img src="/tree-hedge-care-logo.jpg" alt="Tree Hedge Care" style={{ height: '64px', width: 'auto' }} />
+                          </div>
+
+                          {/* Estimate amount */}
+                          <div style={{ padding: '18px 20px 10px', textAlign: 'center', backgroundColor: '#ffffff' }}>
+                            <p style={{ fontSize: '10px', color: '#9ca3af', textTransform: 'uppercase', letterSpacing: '0.18em', margin: '0 0 4px' }}>Estimated Cost</p>
+                            <p style={{ fontSize: '3.2rem', fontWeight: 900, color: '#15803d', letterSpacing: '-2px', lineHeight: 1, margin: 0 }}>
+                              {formatCurrencyGBP(estimate.estimate)}
+                            </p>
+                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', marginTop: '8px' }}>
+                              <span style={{ fontSize: '11px', color: '#9ca3af' }}>{formatCurrencyGBP(estimate.lowerBound)}</span>
+                              <div style={{ flex: 1, maxWidth: '70px', height: '4px', borderRadius: '2px', backgroundColor: '#dcfce7', position: 'relative' }}>
+                                <div style={{ position: 'absolute', top: 0, bottom: 0, left: '25%', right: '25%', backgroundColor: '#16a34a', borderRadius: '2px' }} />
+                              </div>
+                              <span style={{ fontSize: '11px', color: '#9ca3af' }}>{formatCurrencyGBP(estimate.upperBound)}</span>
+                            </div>
+                            <p style={{ fontSize: '10px', color: '#9ca3af', margin: '4px 0 0' }}>indicative range</p>
+                          </div>
+
+                          {/* Lead Score */}
+                          <div style={{ padding: '10px 20px', backgroundColor: '#f0fdf4', borderTop: '1px solid #dcfce7', borderBottom: '1px solid #dcfce7' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '6px' }}>
+                              <span style={{ fontSize: '10px', color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Lead Quality Score</span>
+                              <span style={{ fontSize: '13px', fontWeight: 700, color: getScoreColor(leadScore) }}>{leadScore}/100 — {getScoreLabel(leadScore)}</span>
+                            </div>
+                            <div style={{ height: '6px', borderRadius: '3px', backgroundColor: '#dcfce7', overflow: 'hidden' }}>
+                              <div style={{ height: '100%', width: `${leadScore}%`, backgroundColor: getScoreColor(leadScore), borderRadius: '3px', transition: 'width 0.5s ease' }} />
+                            </div>
+                          </div>
+
+                          {/* Customer details */}
+                          <div style={{ padding: '14px 20px', backgroundColor: '#ffffff' }}>
+                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+                              {[
+                                ['Name', state.fullName || 'N/A'],
+                                ['Phone', state.contactPhone || 'N/A'],
+                                ['Email', state.contactEmail || 'N/A'],
+                                ['Postcode', state.postalCode || 'N/A'],
+                                ['Job Type', 'Hedge Trimming'],
+                                ['Their Budget', state.userBudget ? formatCurrencyGBP(state.userBudget) : 'N/A'],
+                              ].map(([label, val]) => (
+                                <div key={label}>
+                                  <p style={{ fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#9ca3af', margin: '0 0 2px' }}>{label}</p>
+                                  <p style={{ fontSize: '12px', fontWeight: 600, color: '#111827', margin: 0 }}>{val}</p>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+
+                          {/* Timeline */}
+                          <div style={{ padding: '6px 20px 14px', backgroundColor: '#ffffff', borderTop: '1px solid #f0fdf4' }}>
+                            <p style={{ fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#9ca3af', margin: '0 0 2px' }}>Timeline</p>
+                            <p style={{ fontSize: '12px', fontWeight: 600, color: '#111827', margin: 0 }}>{state.projectStartTiming || 'N/A'}</p>
+                          </div>
+
+                          {/* Sent confirmation */}
+                          <div style={{ padding: '12px 20px 16px', backgroundColor: '#f0fdf4', borderTop: '1px solid #86efac', textAlign: 'center' }}>
+                            <p style={{ fontSize: '12px', fontWeight: 700, color: '#15803d', margin: 0 }}>✅ Sent to John</p>
+                          </div>
+
                         </div>
+                      )}
 
-                      </div>
                     </div>
                   )
                 }
